@@ -9,15 +9,19 @@
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",
     "express": "^4.17.1",
+    "faker": "^5.1.0",
     "html-webpack-plugin": "^4.5.0",
     "mysql": "^2.18.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mysql-db-seed": "0.0.4"
+  },
   "scripts": {
     "build": "webpack --watch",
-    "start": "nodemon server/index.js"
+    "start": "node server/index.js",
+    "seed": "node database/seeder.js"
   },
   "repository": {
     "type": "git",

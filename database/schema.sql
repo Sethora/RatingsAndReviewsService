@@ -11,14 +11,13 @@ CREATE TABLE Users (
   eye_color varchar(45),
   hair_color varchar(45),
   skin_tone varchar(45),
-  skin_type varchar(45),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE Reviews (
   id int NOT NULL AUTO_INCREMENT,
   stars int NOT NULL,
-  subject varchar(45),
+  subject varchar(500),
   text varchar(500),
   helpful int,
   not_helpful int,
