@@ -21,6 +21,7 @@
   "scripts": {
     "build": "webpack --watch",
     "start": "node server/index.js",
+    "start:dev": "nodemon server/index.js -w server -w database",
     "seed": "node database/seeder.js"
   },
   "repository": {
