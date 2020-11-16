@@ -40,7 +40,7 @@ sequelize.authenticate()
   .then(() => console.log('DB successfully connected'))
   .catch((err) => console.log('DB connection NOT successful.' + err))
 
-module.exports = sequelize.define('Users', {
+const Users = sequelize.define('Users', {
   username: {
     type: Sequelize.STRING,
     allowNull: false
@@ -63,7 +63,7 @@ module.exports = sequelize.define('Users', {
   }
 })
 
-module.exports = sequelize.define('Reviews', {
+const Reviews = sequelize.define('Reviews', {
   stars: {
     type: Sequelize.INTEGER,
     allowNull: false
@@ -93,3 +93,12 @@ module.exports = sequelize.define('Reviews', {
     allowNull: false
   }
 })
+
+module.exports = {
+  getAllUsers: () => {
+    return Users.findAll()
+  },
+  getAllReviews: () => {
+    return Reviews.findAll()
+  }
+}
