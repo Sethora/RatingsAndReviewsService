@@ -3,19 +3,22 @@ const app = express();
 const port = 3321;
 const path = require('path')
 const db = require('../database')
+const models = require('../database/models.js')
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/products/:id/users', (req, res) => {
-  db.getAllUsers((users) => {
-    res.json(users);
-  })
+  models.getAllUsers()
+    .then((users) => {
+      res.send(users)
+    })
 })
 
 app.get('/api/products/:id/reviews', (req, res) => {
-  db.getAllReviews((reviews) => {
-    res.json(reviews);
-  })
+  models.getAllReviews()
+    .then((reviews) => {
+      res.send(reviews)
+    })
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))
