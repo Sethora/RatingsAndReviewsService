@@ -15,8 +15,12 @@ class ReviewsSummary extends React.Component {
   render() {
     return (
       <div>
-        {this.props.averageStars}
+        Total Number of Reviews: {this.props.totalNumberReviews}
+        <div>
+          Average Stars: {this.props.averageStars}
+        </div>
       </div>
+
     )
   }
 }

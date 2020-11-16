@@ -10,7 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      averageStars: 0
+      averageStars: 0,
+      totalNumberReviews: 0
     }
   }
 
@@ -24,9 +25,9 @@ class App extends React.Component {
         }
         average = totalStars / response.data.length;
         this.setState({
-          averageStars: average
+          averageStars: average,
+          totalNumberReviews: response.data.length
         })
-        console.log(this.state.averageStars)
       })
   }
 
@@ -35,7 +36,7 @@ class App extends React.Component {
       <div>
         <Title />
           <div>
-            <ReviewsSummary averageStars={this.state.averageStars} />
+            <ReviewsSummary averageStars={this.state.averageStars} totalNumberReviews={this.state.totalNumberReviews} />
           </div>
       </div>
     )
