@@ -5,7 +5,8 @@ import styled from 'styled-components'
 const TitleText = styled.div`
   text-align: center;
   font-size: 24px;
-  font-family: georgia;
+  font-family: georgia, times, serif;
+  font-weight: 400;
 `;
 
 const Bar = styled.div`
