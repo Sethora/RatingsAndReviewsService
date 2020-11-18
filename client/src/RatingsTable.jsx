@@ -2,86 +2,50 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components'
 
+const RatingsTable = ({barData}) => {
+
 const Outer = styled.div`
-  margin-left: 400px;
-  margin-top: 20px;
+  margin-left: 300px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: helvetica-neue;
 `;
 
 const Inner = styled.div`
 width: 275px;
-height: 15px;
+height: 12px;
 border: 1px solid black;
 float: right;
-margin-right: 850px;
+margin-right: 800px;
 `;
 
+
 const Color = styled.div`
-width: ${200}px;
-height: 15px;
+width: ${(barData.total / 100) * 275 }px;
+height: 12px;
 background-color: black;
 
 `;
 
 const Text = styled.div`
   margin-left: 290px;
+  font-size: 14px;
+  font-family: helvetica-neue;
 `;
 
-class RatingsTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-  }
-
-  render() {
     return (
       <div>
-        {this.props.barData.map((data) => {
-          return (
             <Outer>
-          {data.stars} stars
+          {barData.stars} stars
           <Inner>
           <Color>
-            <Text>{data.total}</Text>
+            <Text>{barData.total}</Text>
           </Color>
           </Inner>
         </Outer>
-          )
-        })}
-
       </div>
     )
-  }
+
 }
 
 export default RatingsTable;
-
-
-// <Text>
-      // 5 stars
-      //   <ContainerStyles>
-      //     <Color>
-      //     </Color>
-      //   </ContainerStyles>
-      // 4 stars
-      // <ContainerStyles>
-      //     <Color>
-      //     </Color>
-      //   </ContainerStyles>
-      //   3 stars
-      // <ContainerStyles>
-      //     <Color>
-      //     </Color>
-      //   </ContainerStyles>
-      //   2 stars
-      // <ContainerStyles>
-      //     <Color>
-      //     </Color>
-      //   </ContainerStyles>
-      //   1 stars
-      // <ContainerStyles>
-      //     <Color>
-      //     </Color>
-      //   </ContainerStyles>
-      // </Text>

@@ -14,6 +14,8 @@ const Bar = styled.div`
   border-color: #eee;
   margin-top: 24px;
   margin-bottom: 24px;
+  margin-left: 200px;
+  margin-right: 200px;
 `;
 
 

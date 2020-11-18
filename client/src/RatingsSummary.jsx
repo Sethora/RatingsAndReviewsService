@@ -8,7 +8,7 @@ const TotalReviews = styled.div`
   font-size: 16px;
   font-weight: 700;
   font-family: helvetica neue;
-  margin-left: 400px;
+  margin-left: 300px;
   margin-top: 25px;
 `;
 

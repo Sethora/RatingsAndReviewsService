@@ -6,6 +6,8 @@ import Title from './Title.jsx'
 import RatingsSummary from './RatingsSummary.jsx'
 import WriteReview from './WriteReview.jsx'
 import RatingsTable from './RatingsTable.jsx'
+import AverageStars from './AverageStars.jsx'
+import Reviews from './Reviews.jsx'
 
 import controllers from '../controllers/controllers.js'
 
@@ -22,7 +24,9 @@ class App extends React.Component {
         {stars: 3, total: 30},
         {stars: 2, total: 20},
         {stars: 1, total: 10}
-      ]
+      ],
+      users: [],
+      reviews: []
     }
   }
 
@@ -62,9 +66,17 @@ class App extends React.Component {
             {stars: 3, total: totalThreeStars},
             {stars: 2, total: totalTwoStars},
             {stars: 1, total: totalOneStars}
-          ]
+          ],
+          reviews: response.data
         })
+        //console.log(this.state.reviews)
       })
+      controllers.displayUsers()
+        .then((response) => {
+          this.setState({
+            users: response.data
+          })
+        })
   }
 
 
@@ -73,11 +85,18 @@ class App extends React.Component {
       <div>
         <Title />
         <div>
-          <RatingsSummary averageStars={this.state.averageStars} totalNumberReviews={this.state.totalNumberReviews} />
+          <RatingsSummary totalNumberReviews={this.state.totalNumberReviews} />
+          <AverageStars averageStars={this.state.averageStars}/>
         </div>
           <div>
-              <RatingsTable barData={this.state.barData} oneStars={this.state.oneStars} twoStars={this.state.twoStars} threeStars={this.state.twoStars}/>
+            {this.state.barData.map((data) => (
+              <RatingsTable barData={data} />
+            ))}
           </div>
+              {this.state.users.slice(0, 5).map((user) => (
+                <Reviews user={user} reviews={this.state.reviews} />
+              ))}
+
 
 
       </div>
