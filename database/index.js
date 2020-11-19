@@ -40,30 +40,34 @@ sequelize.authenticate()
   .then(() => console.log('DB successfully connected'))
   .catch((err) => console.log('DB connection NOT successful.' + err))
 
-module.exports = sequelize.define('Users', {
-  username: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  age: {
+// const Users = sequelize.define('Users', {
+//   username: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   age: {
+//     type: Sequelize.INTEGER,
+//     allowNull: false
+//   },
+//   eye_color: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   hair_color: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   skin_tone: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   }
+// })
+
+const Reviews = sequelize.define('Reviews', {
+  product_id: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  eye_color: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  hair_color: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  skin_tone: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-})
-
-module.exports = sequelize.define('Reviews', {
   stars: {
     type: Sequelize.INTEGER,
     allowNull: false
@@ -88,8 +92,81 @@ module.exports = sequelize.define('Reviews', {
     type: Sequelize.BOOLEAN,
     allowNull: false
   },
-  user_id: {
+  created: {
     type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  age: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  eye_color: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  hair_color: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  skin_tone: {
+    type: Sequelize.STRING,
     allowNull: false
   }
 })
+
+module.exports = {
+  getAllUsers: () => {
+    return Users.findAll()
+  },
+  getAllReviews: (id) => {
+    return Reviews.findAll({
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByHighestRating: (id) => {
+    return Reviews.findAll({
+      order: [['stars', 'DESC']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByLowestRating: (id) => {
+    return Reviews.findAll({
+      order: [['stars']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByNewest: (id) => {
+    return Reviews.findAll({
+      order: [['created']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByOldest: (id) => {
+    return Reviews.findAll({
+      order: [['created', 'DESC']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByMostHelpful: (id) => {
+    return Reviews.findAll({
+      order: [['helpful', 'DESC']],
+      where: {
+        product_id: id
+      }
+    })
+  }
+}
