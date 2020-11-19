@@ -23,6 +23,7 @@ CREATE TABLE Reviews (
   helpful int,
   not_helpful int,
   recommends boolean,
+  created int NOT NULL,
   username varchar(45),
   age int,
   eye_color varchar(45),

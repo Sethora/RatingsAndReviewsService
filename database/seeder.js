@@ -25,12 +25,13 @@ for (var i = 0; i < 100; i++) {
   var helpful = faker.random.number({min: 0, max: 50})
   var notHelpful = faker.random.number({min: 0, max: 50})
   var recommends = faker.random.boolean()
+  var created = faker.random.number({min: 0, max: 100})
   var username = faker.internet.userName()
   var age = faker.random.number({min: 14, max: 109});
   var eyeColor = faker.vehicle.color()
   var hairColor = faker.vehicle.color()
   var skinTone = faker.vehicle.color()
-  var reviewRow = [product_id, stars, subject, text, helpful, notHelpful, recommends, username, age, eyeColor, hairColor, skinTone]
+  var reviewRow = [product_id, stars, subject, text, helpful, notHelpful, recommends, created, username, age, eyeColor, hairColor, skinTone]
   batchReviewsRows.push(reviewRow)
 }
 
@@ -42,7 +43,7 @@ for (var i = 0; i < 100; i++) {
 //     if (err) throw err;
 // });
 
-var reviewsSql = "INSERT INTO Reviews (product_id, stars, subject, text, helpful, not_helpful, recommends, username, age, eye_color, hair_color, skin_tone) VALUES ?";
+var reviewsSql = "INSERT INTO Reviews (product_id, stars, subject, text, helpful, not_helpful, recommends, created, username, age, eye_color, hair_color, skin_tone) VALUES ?";
 var reviewsValues = [batchReviewsRows]
 
 connection.query(reviewsSql, reviewsValues, function(err) {

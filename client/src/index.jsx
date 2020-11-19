@@ -8,6 +8,7 @@ import WriteReview from './WriteReview.jsx'
 import RatingsTable from './RatingsTable.jsx'
 import AverageStars from './AverageStars.jsx'
 import Reviews from './Reviews.jsx'
+import Filter from './Filter.jsx'
 
 import controllers from '../controllers/controllers.js'
 
@@ -35,7 +36,7 @@ class App extends React.Component {
   componentDidMount() {
     controllers.displayReviews()
       .then((response) => {
-        //console.log(response)
+        console.log(response.data)
         var totalStars = 0;
         var totalOneStars = 0;
         var totalTwoStars = 0;
@@ -74,6 +75,52 @@ class App extends React.Component {
       })
   }
 
+  handleChange(event) {
+    console.log(event.target.value)
+    if(event.target.value === 'Highest Rating') {
+      controllers.sortByHighestRating()
+        .then((response) => {
+          this.setState({
+            reviews:response.data
+          })
+        })
+    } else if (event.target.value === 'Lowest Rating') {
+      controllers.sortByLowestRating()
+        .then((response) => {
+          this.setState({
+            reviews: response.data
+          })
+        })
+    } else if (event.target.value === 'Newest') {
+      console.log('in newest if statement block')
+      controllers.sortByNewest()
+        .then((response) => {
+          console.log(response.data)
+          this.setState({
+            reviews: response.data
+          })
+        })
+    }
+    else if (event.target.value === 'Oldest') {
+      console.log('in oldest if statement block')
+      controllers.sortByOldest()
+        .then((response) => {
+          console.log(response.data)
+          this.setState({
+            reviews: response.data
+          })
+        })
+    } else if (event.target.value === 'Most Helpful') {
+      console.log('in most helpful if statement block')
+      controllers.sortByMostHelpful()
+        .then((response) => {
+          console.log(response.data)
+          this.setState({
+            reviews: response.data
+          })
+        })
+    }
+  }
 
   render() {
     return (
@@ -87,6 +134,7 @@ class App extends React.Component {
             {this.state.barData.map((data) => (
               <RatingsTable barData={data} totalReviews={this.state.totalNumberReviews}/>
             ))}
+            <Filter handleChange={this.handleChange.bind(this)}/>
           </div>
               {this.state.reviews.map((review) => (
                 <Reviews  review={review} />

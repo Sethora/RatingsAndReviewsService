@@ -20,4 +20,39 @@ app.get('/api/products/:id/reviews', (req, res) => {
     })
 })
 
+app.get('/api/products/:id/reviewsByHighestRating', (req, res) => {
+  db.sortByHighestRating(req.params.id)
+    .then((reviews) => {
+      res.send(reviews)
+    })
+})
+
+app.get('/api/products/:id/reviewsByLowestRating', (req, res) => {
+  db.sortByLowestRating(req.params.id)
+    .then((reviews) => {
+      res.send(reviews)
+    })
+})
+
+app.get('/api/products/:id/reviewsByNewest', (req, res) => {
+  db.sortByNewest(req.params.id)
+    .then((reviews) => {
+      res.send(reviews)
+    })
+})
+
+app.get('/api/products/:id/reviewsByOldest', (req, res) => {
+  db.sortByOldest(req.params.id)
+    .then((reviews) => {
+      res.send(reviews)
+    })
+})
+
+app.get('/api/products/:id/reviewsByMostHelpful', (req, res) => {
+  db.sortByMostHelpful(req.params.id)
+    .then((reviews) => {
+      res.send(reviews)
+    })
+})
+
 app.listen(port, () => console.log(`Listening on port ${port}!`))

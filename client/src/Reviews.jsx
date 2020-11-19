@@ -14,6 +14,7 @@ const Bar = styled.div`
   margin-left: 200px;
   margin-right: 200px;
   font-family: helvetica-neue;
+  margin-bottom: 50px;
 `;
 
 const Username = styled.span`
@@ -30,14 +31,14 @@ const Stars = styled.span`
 `;
 
 const Category = styled.span`
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   display: inline-block;
   width: 90px;
 `;
 
 const UserAttribute = styled.span`
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   display: inline-block;
   width: 260px;
@@ -56,11 +57,46 @@ const Text = styled.div`
   margin-left: 350px;
 `;
 
+const Created = styled.div`
+  float:right;
+  font-size: 12px;
+`;
+
+const NotHelpful = styled.div`
+  float: right;
+  font-size: 12px;
+  font-weight: 700;
+  border-style: solid;
+  border-width: 2px;
+  margin-top: 10px;
+  border-radius: 99999px;
+  padding-left: 20.5px;
+  padding-right: 20.5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+`;
+
+const Helpful = styled.span`
+  float: right;
+  font-size: 12px;
+  font-weight: 700;
+  border-style: solid;
+  border-width: 2px;
+  margin-top: 10px;
+  border-radius: 99999px;
+  padding-left: 20.5px;
+  padding-right: 20.5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-right: 15px;
+`;
+
 const Reviews = ({review}) => {
 
     return (
       <Bar>
         <Username>{review.username}</Username>
+        <Created>{review.created} days ago</Created>
         <Stars>{review.stars} stars</Stars>
         <div>
           <Category>
@@ -88,6 +124,12 @@ const Reviews = ({review}) => {
           <UserAttribute>{review.skin_tone}</UserAttribute>
           <Text>{review.text}</Text>
         </div>
+        <NotHelpful>
+          Not Helpful({review.not_helpful})
+        </NotHelpful>
+        <Helpful>
+          Helpful({review.helpful})
+        </Helpful>
       </Bar>
     )
 

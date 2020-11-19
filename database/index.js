@@ -92,6 +92,10 @@ const Reviews = sequelize.define('Reviews', {
     type: Sequelize.BOOLEAN,
     allowNull: false
   },
+  created: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   username: {
     type: Sequelize.STRING,
     allowNull: false
@@ -120,6 +124,46 @@ module.exports = {
   },
   getAllReviews: (id) => {
     return Reviews.findAll({
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByHighestRating: (id) => {
+    return Reviews.findAll({
+      order: [['stars', 'DESC']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByLowestRating: (id) => {
+    return Reviews.findAll({
+      order: [['stars']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByNewest: (id) => {
+    return Reviews.findAll({
+      order: [['created']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByOldest: (id) => {
+    return Reviews.findAll({
+      order: [['created', 'DESC']],
+      where: {
+        product_id: id
+      }
+    })
+  },
+  sortByMostHelpful: (id) => {
+    return Reviews.findAll({
+      order: [['helpful', 'DESC']],
       where: {
         product_id: id
       }

@@ -8,5 +8,20 @@ module.exports = {
   },
   displayReviews: () => {
     return axios.get('/api/products/' + random + '/reviews')
+  },
+  sortByHighestRating: () => {
+    return axios.get('/api/products/' + random + '/reviewsByHighestRating')
+  },
+  sortByLowestRating: () => {
+    return axios.get('/api/products/' + random + '/reviewsByLowestRating')
+  },
+  sortByNewest: () => {
+    return axios.get('/api/products/' + random + '/reviewsByNewest')
+  },
+  sortByOldest: () => {
+    return axios.get('/api/products/' + random + '/reviewsByOldest')
+  },
+  sortByMostHelpful: () => {
+    return axios.get('/api/products/' + random + '/reviewsByMostHelpful')
   }
 }
