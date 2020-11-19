@@ -14,7 +14,7 @@ app.get('/api/products/:id/users', (req, res) => {
 })
 
 app.get('/api/products/:id/reviews', (req, res) => {
-  db.getAllReviews()
+  db.getAllReviews(req.params.id)
     .then((reviews) => {
       res.send(reviews)
     })

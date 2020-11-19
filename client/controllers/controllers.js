@@ -1,10 +1,12 @@
 const axios = require('axios');
 
+var random = Math.floor(Math.random() * 10)
+
 module.exports = {
   displayUsers: () => {
     return axios.get('/api/products/:id/users')
   },
   displayReviews: () => {
-    return axios.get('/api/products/:id/reviews')
+    return axios.get('/api/products/' + random + '/reviews')
   }
 }

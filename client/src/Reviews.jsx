@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import ReviewsContent from './ReviewsContent.jsx'
 
+let i = 0;
+
 const Bar = styled.div`
   border-top: 1px solid;
   border-color: #eee;
@@ -11,65 +13,81 @@ const Bar = styled.div`
   margin-bottom: 24px;
   margin-left: 200px;
   margin-right: 200px;
-  font-size: 14px;
-  font-weight: 700;
   font-family: helvetica-neue;
 `;
 
-const Attributes = styled.div`
-  font-size: 12px;
+const Username = styled.span`
+  font-weight: 700;
+  width: 350px;
+  display: inline-block;
+  margin-bottom: 10px;
 `;
 
-const UserAttributes = styled.span`
-  margin-left: 5px;
+const Stars = styled.span`
+  font-size: 14px;
   font-weight: 400;
+  display: inline-block;
 `;
 
-const User = styled.div`
-margin-bottom: 10px;
+const Category = styled.span`
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-block;
+  width: 90px;
 `;
 
-const WrittenReviews = styled.span`
-  margin-right: 600px;
-  float: right;
+const UserAttribute = styled.span`
+  font-size: 14px;
+  font-weight: 400;
+  display: inline-block;
+  width: 260px;
 `;
 
+const Subject = styled.span`
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-block;
+`;
 
+const Text = styled.div`
+  font-size: 14px;
+  font-weight: 400;
+  display: inline-block;
+  margin-left: 350px;
+`;
 
-const Reviews = ({user, reviews}) => {
+const Reviews = ({review}) => {
 
     return (
       <Bar>
-        <WrittenReviews>
-          {reviews[0].subject}
-        </WrittenReviews>
-        <User>
-          {user.username}
-        </User>
-        <Attributes>
-          Age
-          <UserAttributes>
-            {user.age}
-          </UserAttributes>
-        </Attributes>
-        <Attributes>
+        <Username>{review.username}</Username>
+        <Stars>{review.stars} stars</Stars>
+        <div>
+          <Category>
+            Age
+          </Category>
+          <UserAttribute>{review.age}</UserAttribute>
+        </div>
+        <div>
+        <Category>
           Eye Color
-          <UserAttributes>
-            {user.eye_color}
-          </UserAttributes>
-        </Attributes>
-        <Attributes>
-          Hair Color
-          <UserAttributes>
-            {user.hair_color}
-          </UserAttributes>
-        </Attributes>
-        <Attributes>
-          Skin Tone
-          <UserAttributes>
-            {user.skin_tone}
-          </UserAttributes>
-        </Attributes>
+        </Category>
+        <UserAttribute>{review.eye_color}</UserAttribute>
+        <Subject>{review.subject}</Subject>
+        </div>
+        <div>
+          <Category>
+            Hair color
+          </Category>
+          <UserAttribute>{review.hair_color}</UserAttribute>
+        </div>
+        <div>
+          <Category>
+            Skin Tone
+          </Category>
+          <UserAttribute>{review.skin_tone}</UserAttribute>
+          <Text>{review.text}</Text>
+        </div>
       </Bar>
     )
 

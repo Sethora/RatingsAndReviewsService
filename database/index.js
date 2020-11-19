@@ -40,30 +40,34 @@ sequelize.authenticate()
   .then(() => console.log('DB successfully connected'))
   .catch((err) => console.log('DB connection NOT successful.' + err))
 
-const Users = sequelize.define('Users', {
-  username: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  age: {
+// const Users = sequelize.define('Users', {
+//   username: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   age: {
+//     type: Sequelize.INTEGER,
+//     allowNull: false
+//   },
+//   eye_color: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   hair_color: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   skin_tone: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   }
+// })
+
+const Reviews = sequelize.define('Reviews', {
+  product_id: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  eye_color: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  hair_color: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  skin_tone: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-})
-
-const Reviews = sequelize.define('Reviews', {
   stars: {
     type: Sequelize.INTEGER,
     allowNull: false
@@ -88,8 +92,24 @@ const Reviews = sequelize.define('Reviews', {
     type: Sequelize.BOOLEAN,
     allowNull: false
   },
-  user_id: {
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  age: {
     type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  eye_color: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  hair_color: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  skin_tone: {
+    type: Sequelize.STRING,
     allowNull: false
   }
 })
@@ -98,7 +118,11 @@ module.exports = {
   getAllUsers: () => {
     return Users.findAll()
   },
-  getAllReviews: () => {
-    return Reviews.findAll()
+  getAllReviews: (id) => {
+    return Reviews.findAll({
+      where: {
+        product_id: id
+      }
+    })
   }
 }

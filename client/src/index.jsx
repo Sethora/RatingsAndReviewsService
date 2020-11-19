@@ -35,6 +35,7 @@ class App extends React.Component {
   componentDidMount() {
     controllers.displayReviews()
       .then((response) => {
+        //console.log(response)
         var totalStars = 0;
         var totalOneStars = 0;
         var totalTwoStars = 0;
@@ -69,14 +70,8 @@ class App extends React.Component {
           ],
           reviews: response.data
         })
-        //console.log(this.state.reviews)
+
       })
-      controllers.displayUsers()
-        .then((response) => {
-          this.setState({
-            users: response.data
-          })
-        })
   }
 
 
@@ -90,11 +85,11 @@ class App extends React.Component {
         </div>
           <div>
             {this.state.barData.map((data) => (
-              <RatingsTable barData={data} />
+              <RatingsTable barData={data} totalReviews={this.state.totalNumberReviews}/>
             ))}
           </div>
-              {this.state.users.slice(0, 5).map((user) => (
-                <Reviews user={user} reviews={this.state.reviews} />
+              {this.state.reviews.map((review) => (
+                <Reviews  review={review} />
               ))}
 
 

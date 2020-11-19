@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components'
 
-const RatingsTable = ({barData}) => {
+const RatingsTable = ({barData, totalReviews}) => {
 
 const Outer = styled.div`
   margin-left: 300px;
@@ -21,7 +21,7 @@ margin-right: 800px;
 
 
 const Color = styled.div`
-width: ${(barData.total / 100) * 275 }px;
+width: ${(barData.total / totalReviews) * 275 }px;
 height: 12px;
 background-color: black;
 
