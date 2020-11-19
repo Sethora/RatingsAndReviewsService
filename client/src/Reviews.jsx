@@ -74,6 +74,7 @@ const NotHelpful = styled.div`
   padding-right: 20.5px;
   padding-top: 3px;
   padding-bottom: 3px;
+  cursor: pointer;
 `;
 
 const Helpful = styled.span`
@@ -89,6 +90,7 @@ const Helpful = styled.span`
   padding-top: 3px;
   padding-bottom: 3px;
   margin-right: 15px;
+  cursor: pointer;
 `;
 
 const Reviews = ({review}) => {

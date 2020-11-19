@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// random number between 0 - 9
 var random = Math.floor(Math.random() * 10)
 
 module.exports = {

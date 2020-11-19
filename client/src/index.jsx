@@ -58,7 +58,8 @@ class App extends React.Component {
             totalFiveStars += 1;
           }
         }
-        average = totalStars / response.data.length;
+        average = (totalStars / response.data.length).toFixed(1);
+
         this.setState({
           averageStars: average,
           totalNumberReviews: response.data.length,
@@ -71,7 +72,6 @@ class App extends React.Component {
           ],
           reviews: response.data
         })
-
       })
   }
 
