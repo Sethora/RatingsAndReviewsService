@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3321;
+//const port = 3321;
 const path = require('path')
 const db = require('../database')
 const bodyParser = require("body-parser");
@@ -17,18 +17,19 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 //   res.sendFile(path.join(__dirname, '../client/dist'));
 // })
 
-app.get('/api/products/:id/users', (req, res) => {
-  db.getAllUsers()
-    .then((users) => {
-      res.send(users)
-    })
-})
-
-app.get('/products/:id/reviews', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-})
+// app.get('/api/products/:id/users', (req, res) => {
+//   db.getAllUsers()
+//     .then((users) => {
+//       res.send(users)
+//     })
+// })
 
 app.get('/api/products/:id/reviews', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  //File(path.join(__dirname, '../client/dist/index.html'));
+})
+
+app.get('/api/products/:id/allReviews', (req, res) => {
   db.getAllReviews(req.params.id)
     .then((reviews) => {
       res.send(reviews)
@@ -69,11 +70,5 @@ app.get('/api/products/:id/reviewsByMostHelpful', (req, res) => {
       res.send(reviews)
     })
 })
-
-const students = ["Elie", "Matt", "Joel", "Michael"];
-
-app.get("/hello", (req, res) => {
-  return res.json(students);
-});
 
 module.exports = app;

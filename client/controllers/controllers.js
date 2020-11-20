@@ -3,13 +3,13 @@ const axios = require('axios');
 var getProductIdFromPath = () => {
   var url = window.location.pathname;
   var result = url.split('/');
-  var id = result[2];
+  var id = result[3];
   return id;
 }
 
 module.exports = {
   displayReviews: () => {
-    return axios.get('/api/products/' + getProductIdFromPath() + '/reviews')
+    return axios.get('/api/products/' + getProductIdFromPath() + '/allReviews')
   },
   sortByHighestRating: () => {
     return axios.get('/api/products/' + getProductIdFromPath() + '/reviewsByHighestRating')

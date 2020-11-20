@@ -37,7 +37,7 @@ class App extends React.Component {
   componentDidMount() {
     controllers.displayReviews()
       .then((response) => {
-        console.log(response.data)
+        console.log('all reviews', response)
         var totalStars = 0;
         var totalOneStars = 0;
         var totalTwoStars = 0;
