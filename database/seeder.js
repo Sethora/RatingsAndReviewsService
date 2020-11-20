@@ -17,8 +17,8 @@ const connection = mysql.createConnection(mysqlConfig);
 // }
 
 var batchReviewsRows = [];
-for (var i = 0; i < 100; i++) {
-  var product_id = faker.random.number({min: 0, max: 9})
+for (var i = 0; i < 700; i++) {
+  var product_id = faker.random.number({min: 1, max: 100})
   var stars = faker.random.number({min:1, max: 5})
   var subject = faker.lorem.words()
   var text = faker.lorem.sentences()

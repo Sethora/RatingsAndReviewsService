@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Route } from "react-router-dom"
 import styled from 'styled-components'
 
 import Title from './Title.jsx'
@@ -124,27 +125,31 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Title />
         <div>
-          <RatingsSummary totalNumberReviews={this.state.totalNumberReviews} />
-          <AverageStars averageStars={this.state.averageStars}/>
+
+              <Title />
+
+            <div>
+              <RatingsSummary totalNumberReviews={this.state.totalNumberReviews} />
+              <AverageStars averageStars={this.state.averageStars}/>
+            </div>
+              <div>
+                {this.state.barData.map((data) => (
+                  <RatingsTable barData={data} totalReviews={this.state.totalNumberReviews}/>
+                ))}
+                <Filter handleChange={this.handleChange.bind(this)}/>
+              </div>
+                  {this.state.reviews.map((review) => (
+                    <Reviews  review={review} />
+                  ))}
+
         </div>
-          <div>
-            {this.state.barData.map((data) => (
-              <RatingsTable barData={data} totalReviews={this.state.totalNumberReviews}/>
-            ))}
-            <Filter handleChange={this.handleChange.bind(this)}/>
-          </div>
-              {this.state.reviews.map((review) => (
-                <Reviews  review={review} />
-              ))}
 
-
-
-      </div>
     )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+      <App />,
+document.getElementById('app')
+);
