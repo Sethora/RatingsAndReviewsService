@@ -7,6 +7,7 @@ var getProductIdFromPath = () => {
   return id;
 }
 
+
 module.exports = {
   displayReviews: () => {
     return axios.get('/api/products/' + getProductIdFromPath() + '/allReviews')

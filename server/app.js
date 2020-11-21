@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-//const port = 3321;
 const path = require('path')
 const db = require('../database')
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -24,10 +24,9 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 //     })
 // })
 
-app.get('/api/products/:id/reviews', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-  //File(path.join(__dirname, '../client/dist/index.html'));
-})
+// app.get('/api/products/:id/reviews', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+// })
 
 app.get('/api/products/:id/allReviews', (req, res) => {
   db.getAllReviews(req.params.id)
