@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 //   console.log('confused')
 // })
 
-// app.use('*', (req, res) => {
+// app.use('/api/products/:id/reviews', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../client/dist'));
 // })
 
@@ -24,46 +24,46 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 //     })
 // })
 
-// app.get('/api/products/:id/reviews', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-// })
+app.get('/api/products/:id/reviews', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+})
 
-app.get('/api/products/:id/allReviews', (req, res) => {
+app.get('/api/products/:id/reviews/allReviews', (req, res) => {
   db.getAllReviews(req.params.id)
     .then((reviews) => {
       res.send(reviews)
     })
 })
 
-app.get('/api/products/:id/reviewsByHighestRating', (req, res) => {
+app.get('/api/products/:id/reviews/reviewsByHighestRating', (req, res) => {
   db.sortByHighestRating(req.params.id)
     .then((reviews) => {
       res.send(reviews)
     })
 })
 
-app.get('/api/products/:id/reviewsByLowestRating', (req, res) => {
+app.get('/api/products/:id/reviews/reviewsByLowestRating', (req, res) => {
   db.sortByLowestRating(req.params.id)
     .then((reviews) => {
       res.send(reviews)
     })
 })
 
-app.get('/api/products/:id/reviewsByNewest', (req, res) => {
+app.get('/api/products/:id/reviews/reviewsByNewest', (req, res) => {
   db.sortByNewest(req.params.id)
     .then((reviews) => {
       res.send(reviews)
     })
 })
 
-app.get('/api/products/:id/reviewsByOldest', (req, res) => {
+app.get('/api/products/:id/reviews/reviewsByOldest', (req, res) => {
   db.sortByOldest(req.params.id)
     .then((reviews) => {
       res.send(reviews)
     })
 })
 
-app.get('/api/products/:id/reviewsByMostHelpful', (req, res) => {
+app.get('/api/products/:id/reviews/reviewsByMostHelpful', (req, res) => {
   db.sortByMostHelpful(req.params.id)
     .then((reviews) => {
       res.send(reviews)

@@ -3,28 +3,28 @@ const axios = require('axios');
 var getProductIdFromPath = () => {
   var url = window.location.pathname;
   var result = url.split('/');
-  var id = result[3];
+  var id = result[2];
   return id;
 }
 
 
 module.exports = {
   displayReviews: () => {
-    return axios.get('/api/products/' + getProductIdFromPath() + '/allReviews')
+    return axios.get('/api/products/' + getProductIdFromPath() + '/reviews/allReviews')
   },
   sortByHighestRating: () => {
-    return axios.get('/api/products/' + getProductIdFromPath() + '/reviewsByHighestRating')
+    return axios.get('/api/products/' + getProductIdFromPath() + '/reviews/reviewsByHighestRating')
   },
   sortByLowestRating: () => {
-    return axios.get('/api/products/' + getProductIdFromPath() + '/reviewsByLowestRating')
+    return axios.get('/api/products/' + getProductIdFromPath() + '/reviews/reviewsByLowestRating')
   },
   sortByNewest: () => {
-    return axios.get('/api/products/' + getProductIdFromPath() + '/reviewsByNewest')
+    return axios.get('/api/products/' + getProductIdFromPath() + '/reviews/reviewsByNewest')
   },
   sortByOldest: () => {
-    return axios.get('/api/products/' + getProductIdFromPath() + '/reviewsByOldest')
+    return axios.get('/api/products/' + getProductIdFromPath() + '/reviews/reviewsByOldest')
   },
   sortByMostHelpful: () => {
-    return axios.get('/api/products/' + getProductIdFromPath() + '/reviewsByMostHelpful')
+    return axios.get('/api/products/' + getProductIdFromPath() + '/reviews/reviewsByMostHelpful')
   }
 }
