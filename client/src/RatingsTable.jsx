@@ -16,7 +16,7 @@ display: flex;
 flex-wrap: wrap;
 width: 19.09vw;
 height: 12px;
-border: 1px solid black;
+border: 1px solid #c5c5c5;
 float: right;
 margin-right: 55vw;
 `;
