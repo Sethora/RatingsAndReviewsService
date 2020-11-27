@@ -3,7 +3,7 @@ const axios = require('axios');
 var getProductIdFromPath = () => {
   var url = window.location.pathname;
   var result = url.split('/');
-  var id = result[3];
+  var id = result[2];
   return id;
 }
 

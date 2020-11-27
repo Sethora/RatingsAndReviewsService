@@ -130,6 +130,20 @@ const Reviews = ({review}) => {
       margin-top: 20px
     `;
 
+    const Recommend = styled.span`
+      margin-left: 350px;
+      margin-top: 25px;
+    `;
+
+    function Recommends() {
+      if (review.recommends) {
+        return <span>Recommended</span>;
+      } else {
+          return  <span>Not Recommended</span>
+      }
+
+    }
+
     return (
       <Bar>
         <Username>{review.username}</Username>
@@ -167,6 +181,9 @@ const Reviews = ({review}) => {
         <NotHelpful>
           Not Helpful({review.not_helpful})
         </NotHelpful>
+        <Recommend>
+          <Recommends />
+        </Recommend>
         <Helpful>
           Helpful({review.helpful})
         </Helpful>
