@@ -12,10 +12,7 @@ const Reviews = ({review}) => {
   const Bar = styled.div`
     border-top: 1px solid;
     border-color: #eee;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin: 24px 2px;
     font-family: helvetica-neue;
     margin-bottom: 50px;
   `;
@@ -57,7 +54,7 @@ const Reviews = ({review}) => {
     font-size: 14px;
     font-weight: 400;
     display: inline-block;
-    margin-left: 350px;
+    margin-left: 35%
   `;
 
   const Created = styled.div`
@@ -102,10 +99,11 @@ const Reviews = ({review}) => {
       font-size: 20px;
       height: 25px;
       width: 100px;
-      margin-left: 350px;
       position: relative;
       padding: 0;
       text-shadow: 0px 1px 0 #a2a2a2;
+      display: flex;
+      margin-left: 35%;
     `;
 
     const SecondDiv = styled.div`
@@ -118,12 +116,14 @@ const Reviews = ({review}) => {
     left: 0;
     overflow: hidden;
     width: ${(review.stars / 5) * 100}px;
+    align-items: center;
     `;
 
     const ThirdDiv = styled.div`
       padding: 0;
       display: block;
       z-index: 0;
+      align-items: center;
     `;
 
     const IndividualText = styled.div`
@@ -149,9 +149,9 @@ const Reviews = ({review}) => {
         <Username>{review.username}</Username>
         <Created>{review.created} days ago</Created>
         <FirstDiv>
-    <SecondDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></SecondDiv>
-    <ThirdDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></ThirdDiv>
-    </FirstDiv>
+          <SecondDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></SecondDiv>
+          <ThirdDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></ThirdDiv>
+        </FirstDiv>
         <div>
           <Category>
             Age
@@ -181,9 +181,6 @@ const Reviews = ({review}) => {
         <NotHelpful>
           Not Helpful({review.not_helpful})
         </NotHelpful>
-        <Recommend>
-          <Recommends />
-        </Recommend>
         <Helpful>
           Helpful({review.helpful})
         </Helpful>

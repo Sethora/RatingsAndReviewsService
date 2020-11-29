@@ -4,16 +4,22 @@ import styled from 'styled-components'
 
 const Dropdown = styled.div`
   float: right;
-  margin-right: 200px;
   font-size: 16px;
   font-family: helvetica-neue;
+`;
+
+const Sort = styled.div`
+  display: inline-block;
+  margin-right: 5px;
 `;
 
 const Filter = ({handleChange}) => {
   return (
     <Dropdown>
+      <Sort>
       Sort By:
-      <select onChange={handleChange}>
+      </Sort>
+       <select onChange={handleChange}>
         <option>---</option>
         <option>Newest</option>
         <option>Oldest</option>

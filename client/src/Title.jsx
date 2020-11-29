@@ -7,15 +7,12 @@ const TitleText = styled.div`
   font-size: 24px;
   font-family: georgia, times, serif;
   font-weight: 400;
+  margin-bottom: 40px;
 `;
 
 const Bar = styled.div`
-  border-top: 1px solid;
-  border-color: #eee;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  margin-left: 200px;
-  margin-right: 200px;
+  border-top: 1px solid #eee;
+  margin: 24px 0;
 `;
 
 
@@ -32,7 +29,6 @@ class Title extends React.Component {
       <div>
         <Bar></Bar>
         <TitleText>Ratings & Reviews</TitleText>
-
       </div>
     )
   }

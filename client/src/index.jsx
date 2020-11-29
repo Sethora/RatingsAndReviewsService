@@ -1,18 +1,45 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Route } from "react-router-dom"
-import styled from 'styled-components'
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route } from "react-router-dom";
+import styled from 'styled-components';
 
-import Title from './Title.jsx'
-import RatingsSummary from './RatingsSummary.jsx'
-import WriteReview from './WriteReview.jsx'
-import RatingsTable from './RatingsTable.jsx'
-import AverageStars from './AverageStars.jsx'
-import Reviews from './Reviews.jsx'
-import Filter from './Filter.jsx'
+import Title from './Title.jsx';
+import WriteReview from './WriteReview.jsx';
+import RatingsSummary from './RatingsSummary.jsx';
+import RatingsTable from './RatingsTable.jsx';
+import AverageStars from './AverageStars.jsx';
+import Reviews from './Reviews.jsx';
+import Filter from './Filter.jsx';
 
-import controllers from '../controllers/controllers.js'
+import controllers from '../controllers/controllers.js';
 
+const AppStyles = styled.div`
+  max-width: 70%;
+  width: 70%;
+  margin: 0 auto;
+`;
+
+const RatingStyles = styled.div`
+  display: flex;
+  max-width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+`;
+
+const WrapperStyles = styled.div`
+  margin: 0 5%;
+`;
+
+const StaringStyles = styled.div`
+  display: flex;
+  margin: 0 auto;
+  max-width: 90%;
+  width: 90%;
+  .tablestyles {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -31,6 +58,8 @@ class App extends React.Component {
       reviews: []
     }
   }
+
+
 
 
 
@@ -125,27 +154,27 @@ class App extends React.Component {
 
   render() {
     return (
-        <div>
+        <AppStyles>
+            <Title />
+              <WrapperStyles>
+                <RatingStyles>
+                  <RatingsSummary totalNumberReviews={this.state.totalNumberReviews} />
+                  <WriteReview />
+                </RatingStyles>
+                <StaringStyles>
+                  <div className="tablestyles">
+                      {this.state.barData.map((data) => <RatingsTable
+                              barData={data}
+                              totalReviews={this.state.totalNumberReviews}/>)}
+                  </div>
+                  <AverageStars averageStars={this.state.averageStars} />
+                </StaringStyles>
+              </WrapperStyles>
+              <Filter handleChange={this.handleChange.bind(this)}/>
 
-              <Title />
-
-            <div>
-              <RatingsSummary totalNumberReviews={this.state.totalNumberReviews} />
-              <AverageStars averageStars={this.state.averageStars}/>
-            </div>
-              <div>
-                {this.state.barData.map((data) => (
-                  <RatingsTable barData={data} totalReviews={this.state.totalNumberReviews}/>
-                ))}
-                <Filter handleChange={this.handleChange.bind(this)}/>
-              </div>
-                  {this.state.reviews.map((review) => (
-                    <Reviews  review={review} />
-                  ))}
-
-        </div>
-
-    )
+            {this.state.reviews.map((review) => <Reviews  review={review} />)}
+        </AppStyles>
+    );
   }
 }
 

@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components'
 
-import WriteReview from './WriteReview.jsx'
-
 const TotalReviews = styled.div`
+  display: inline-block;
   font-size: 16px;
   font-weight: 700;
   font-family: helvetica neue;
-  margin-left: 300px;
-  margin-top: 25px;
+  margin-bottom: 15px;
 `;
 
 const Block = styled.div`
@@ -31,12 +29,10 @@ class RatingsSummary extends React.Component {
 
   render() {
     return (
-      <div>
-        <TotalReviews>{this.props.totalNumberReviews} reviews <span><WriteReview /></span></TotalReviews>
-
-      </div>
-
-    )
+      <TotalReviews>
+        {this.props.totalNumberReviews} reviews
+      </TotalReviews>
+    );
   }
 }
 

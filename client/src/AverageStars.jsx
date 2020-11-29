@@ -1,28 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import WriteReview from './WriteReview.jsx';
 
 
 const AverageStars = ({averageStars}) => {
 
   const Outer = styled.div`
-    margin-left: 800px;
-    font-family: helvetica-neue;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 16px;
     font-stretch: 100%;
     text-size-adjust: 100%;
+    font-family: helvetica-neue;
+    .starWrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
   `;
 
   const FirstDiv = styled.div`
-    unicode-bidi: bidi-override;
-    color: #c5c5c5;
-    font-size: 30px;
+    padding: 0;
     height: 25px;
     width: 100px;
-
-
+    color: #c5c5c5;
+    font-size: 30px;
     position: relative;
-    padding: 0;
+    unicode-bidi: bidi-override;
     text-shadow: 0px 1px 0 #a2a2a2;
   `;
 
@@ -50,13 +57,15 @@ const AverageStars = ({averageStars}) => {
 
   return (
     <Outer>
-    <FirstDiv>
-    <SecondDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></SecondDiv>
-    <ThirdDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></ThirdDiv>
-    </FirstDiv>
-    <Text>
-    {averageStars} / 5 stars
-    </Text>
+      <div className="starWrapper">
+        <FirstDiv>
+          <SecondDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></SecondDiv>
+          <ThirdDiv><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></ThirdDiv>
+        </FirstDiv>
+        <Text>
+        {averageStars} / 5 stars
+        </Text>
+      </div>
     </Outer>
   )
 }

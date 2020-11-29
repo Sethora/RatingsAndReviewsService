@@ -10,7 +10,7 @@ display: inline-block;
 font-size: 14px;
 font-weight: 400;
 outline-color: rgb(20, 112, 245);
-margin-left: 615px;
+
 `;
 
 class WriteReview extends React.Component {
@@ -26,10 +26,7 @@ class WriteReview extends React.Component {
       <Testing>
         Write a review
       </Testing>
-
-
-
-    )
+    );
   }
 }
 
